@@ -1,3 +1,4 @@
+import 'package:books_cafe/Ui/Login/StudentOrInstitute.dart';
 import 'package:books_cafe/Ui/Student/StudentMainActivity.dart';
 import 'package:flutter/material.dart';
 
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: StudentMainActivity(),
+      home: StudentOrInstitute(),
     );
   }
 }
