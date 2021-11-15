@@ -1,71 +1,78 @@
 import 'package:books_cafe/Ui/Institute/InstituteMainActivity.dart';
 import 'package:books_cafe/Ui/Student/StudentMainActivity.dart';
+import 'package:books_cafe/UiDesign/Designs.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class StudentOrInstitute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              margin: EdgeInsets.all(
-                10,
-              ),
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: Colors.tealAccent,
-                  width: 3,
-                ),
-                borderRadius: BorderRadius.all(
-                  Radius.circular(5.0)
-                )
-              ),
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.pushReplacement(
-                      context, 
-                      MaterialPageRoute(builder: (context) => StudentMainActivity()),
-                  );
-                },
-                child: Icon(
-                  Icons.group,
-                  size: 75,
-                ),
+      body: Column(
+        children: [
+          ClipPath(
+            clipper: BackgroundClipper(),
+            child: Container(
+              width: double.infinity,
+              height: 300,
+              color: Colors.lightBlue[900],
+              child: Image.asset(
+                'assets/library.jpg',
+                fit: BoxFit.fill,
+                width: 75,
+                height: 75,
               ),
             ),
-            Container(
-              margin: EdgeInsets.all(
-                10,
-              ),
-              decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Colors.tealAccent,
-                    width: 3,
-                  ),
-                  borderRadius: BorderRadius.all(
-                      Radius.circular(5.0)
-                  )
-              ),
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.pushReplacement(
-                      context, 
-                      MaterialPageRoute(builder: (context) => InstituteMainActivity()),
-                  );
-                },
-                child: Icon(
-                  Icons.apartment,
-                  size: 75,
+          ),
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                GestureDetector(
+                  child: ImageTextCard('assets/student.png', "Student"),
+                  onTap: () {
+                    Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => StudentMainActivity())
+                    );
+                  }
                 ),
-              ),
+                GestureDetector(
+                  child: ImageTextCard('assets/university.png', "Institute"),
+                  onTap: () {
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => StudentMainActivity())
+                    );
+                  }
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
+}
 
+class BackgroundClipper extends CustomClipper<Path> {
+  @override
+  getClip(Size size) {
+    Path path = Path();
+    path.lineTo(0, 0);
+    path.lineTo(0, size.height - 25);
+    path.quadraticBezierTo(size.width * 0.25, size.height - 50,
+        size.width * 0.5, size.height - 25);
+    path.quadraticBezierTo(
+        size.width * 0.75, size.height, size.width, size.height - 25);
+    path.lineTo(size.width, size.height - 25);
+    path.lineTo(size.width, 0);
+    return path;
+  }
+
+  @override
+  bool shouldReclip(covariant CustomClipper oldClipper) {
+    return false;
+  }
 }
