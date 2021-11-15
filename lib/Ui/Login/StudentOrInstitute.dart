@@ -1,4 +1,5 @@
 import 'package:books_cafe/Ui/Institute/InstituteMainActivity.dart';
+import 'package:books_cafe/Ui/Login/LoginActivity.dart';
 import 'package:books_cafe/Ui/Student/StudentMainActivity.dart';
 import 'package:books_cafe/UiDesign/Designs.dart';
 import 'package:flutter/cupertino.dart';
@@ -34,7 +35,7 @@ class StudentOrInstitute extends StatelessWidget {
                   onTap: () {
                     Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => StudentMainActivity())
+                    MaterialPageRoute(builder: (context) => LoginActivity(StudentMainActivity()))
                     );
                   }
                 ),
@@ -43,7 +44,7 @@ class StudentOrInstitute extends StatelessWidget {
                   onTap: () {
                     Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(builder: (context) => StudentMainActivity())
+                        MaterialPageRoute(builder: (context) => LoginActivity(InstituteMainActivity()))
                     );
                   }
                 ),
