@@ -1,4 +1,7 @@
 import 'package:books_cafe/Ui/Student/StudentAccountActivity.dart';
+import 'package:books_cafe/Ui/Student/StudentLibraryActivity.dart';
+import 'package:books_cafe/Ui/Student/StudentMyBooksActivity.dart';
+import 'package:books_cafe/Ui/Student/StudentNotificationActivity.dart';
 import 'package:flutter/material.dart';
 
 class StudentMainActivity extends StatefulWidget {
@@ -12,13 +15,13 @@ class _StudentMainActivityState extends State<StudentMainActivity> {
 
   final tabs = [
     Center(
-      child: Text("Library"),
+      child: StudentLibraryActivity(),
     ),
     Center(
-      child: Text("My Books"),
+      child: StudentMyBooksActivity(),
     ),
     Center(
-      child: Text("Notification"),
+      child: StudentMyNotificationActivity(),
     ),
     Center(
       child: StudentAccountActivity(),

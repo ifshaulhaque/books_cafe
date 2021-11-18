@@ -1,3 +1,4 @@
+import 'package:books_cafe/UiDesign/Designs.dart';
 import 'package:flutter/material.dart';
 
 class InstituteAccountActivity extends StatelessWidget {
@@ -7,50 +8,53 @@ class InstituteAccountActivity extends StatelessWidget {
       body: Container(
         child: Column(
           children: [
-            Container(
-              padding: EdgeInsets.all(10),
-              color: Colors.green,
-              child: Row(
-                children: [
-                  Icon(
-                    Icons.account_circle,
-                    size: 75,
-                  ),
-                  Expanded(
-                    child: Column(
-                      children: [
-                        Container(
-                          width: double.infinity,
-                          child: Text(
-                            "Institute Name",
-                            style: TextStyle(
-                              fontWeight: FontWeight.w900,
-                              fontSize: 22,
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: double.infinity,
-                          child: Text(
-                            "Email@gmail.com",
-                            style: TextStyle(
-                              fontSize: 18,
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: double.infinity,
-                          child: Text(
-                            "+919876543210",
-                            style: TextStyle(
-                              fontSize: 18,
-                            ),
-                          ),
-                        ),
-                      ],
+            ClipPath(
+              clipper: BackgroundClipperExteriorBottomRound(),
+              child: Container(
+                padding: EdgeInsets.fromLTRB(10, 30, 10, 50),
+                color: Colors.green,
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.account_circle,
+                      size: 75,
                     ),
-                  )
-                ],
+                    Expanded(
+                      child: Column(
+                        children: [
+                          Container(
+                            width: double.infinity,
+                            child: Text(
+                              "Institute Name",
+                              style: TextStyle(
+                                fontWeight: FontWeight.w900,
+                                fontSize: 22,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: double.infinity,
+                            child: Text(
+                              "Email@gmail.com",
+                              style: TextStyle(
+                                fontSize: 18,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: double.infinity,
+                            child: Text(
+                              "+919876543210",
+                              style: TextStyle(
+                                fontSize: 18,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
             Container(

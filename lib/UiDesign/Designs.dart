@@ -94,7 +94,7 @@ class BackgroundClipperWithText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipPath(
-      clipper: BackgroundClipper(),
+      clipper: BackgroundClipperBottomWave(),
       child: Container(
         width: double.infinity,
         height: 300,
@@ -115,7 +115,7 @@ class BackgroundClipperWithText extends StatelessWidget {
   }
 }
 
-class BackgroundClipper extends CustomClipper<Path> {
+class BackgroundClipperBottomWave extends CustomClipper<Path> {
   @override
   getClip(Size size) {
     Path path = Path();
@@ -134,4 +134,42 @@ class BackgroundClipper extends CustomClipper<Path> {
   bool shouldReclip(covariant CustomClipper oldClipper) {
     return false;
   }
+}
+
+class BackgroundClipperExteriorBottomRound extends CustomClipper<Path> {
+  @override
+  getClip(Size size) {
+    Path path = Path();
+    path.lineTo(0, 0);
+    path.lineTo(0, size.height - 50);
+    path.quadraticBezierTo(
+        size.width * 0.30, size.height, size.width, size.height - 50);
+    path.lineTo(size.width, size.height - 50);
+    path.lineTo(size.width, 0);
+    return path;
+  }
+
+  @override
+  bool shouldReclip(covariant CustomClipper oldClipper) {
+    return false;
+  }
+}
+
+class RoundImage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 50,
+      width: 50,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: Colors.blueGrey
+      ),
+      child: Icon(
+        Icons.book,
+        color: Colors.white,
+      ),
+    );
+  }
+
 }
