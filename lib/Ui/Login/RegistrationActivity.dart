@@ -26,7 +26,7 @@ class RegistrationActivity extends StatelessWidget {
                       "Mobile No", Icon(Icons.phone_android_outlined)),
                   TextFieldWithOutlinedBorder(
                       "Password", Icon(Icons.password_outlined)),
-                  ElevatedButtonNormal("Register",mainActivity),
+                  ElevatedButtonToActivity("Register",mainActivity),
                 ],
               ),
             ),

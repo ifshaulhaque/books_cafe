@@ -79,6 +79,7 @@ class PopupMenu extends StatelessWidget {
           child: ListTile(
             leading: Icon(Icons.download),
             title: Text("Download"),
+            subtitle: Text("10.39 Mb"),
           ),
           value: 2,
         ),

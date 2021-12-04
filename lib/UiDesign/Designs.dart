@@ -44,14 +44,23 @@ class ImageTextCard extends StatelessWidget {
 class TextFieldWithOutlinedBorder extends StatelessWidget {
   var labelText;
   var suffixIcon;
+  var txt = TextEditingController();
+  var isEnalble = true;
+  var text;
 
   TextFieldWithOutlinedBorder(this.labelText, this.suffixIcon);
+
+  TextFieldWithOutlinedBorder.Disable(this.labelText, this.suffixIcon, this.text, this.isEnalble) {
+    txt.text = text;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.fromLTRB(10, 5, 10, 5),
       child: TextField(
+        controller: txt,
+        enabled: isEnalble,
         decoration: InputDecoration(
           border: OutlineInputBorder(),
           labelText: labelText,
@@ -62,11 +71,11 @@ class TextFieldWithOutlinedBorder extends StatelessWidget {
   }
 }
 
-class ElevatedButtonNormal extends StatelessWidget {
+class ElevatedButtonToActivity extends StatelessWidget {
   var btnText;
   var activity;
 
-  ElevatedButtonNormal(this.btnText, this.activity);
+  ElevatedButtonToActivity(this.btnText, this.activity);
 
   @override
   Widget build(BuildContext context) {
@@ -77,6 +86,28 @@ class ElevatedButtonNormal extends StatelessWidget {
           Navigator.pushReplacement(
               context, MaterialPageRoute(builder: (context) => activity));
         },
+        child: Text(btnText),
+        style: ElevatedButton.styleFrom(
+          minimumSize: Size.fromHeight(40),
+        ),
+      ),
+    );
+  }
+}
+
+class ElevatedButtonBack extends StatelessWidget {
+  var btnText;
+  var action;
+
+  ElevatedButtonBack(this.btnText);
+  ElevatedButtonBack.withAction(this.btnText,this.action);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.fromLTRB(10, 5, 10, 5),
+      child: ElevatedButton(
+        onPressed: action,
         child: Text(btnText),
         style: ElevatedButton.styleFrom(
           minimumSize: Size.fromHeight(40),

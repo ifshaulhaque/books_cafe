@@ -39,7 +39,7 @@ class LoginActivity extends StatelessWidget {
                       ),
                     ),
                   ),
-                  ElevatedButtonNormal("Login",mainActivity),
+                  ElevatedButtonToActivity("Login",mainActivity),
                   GestureDetector(
                     onTap: () {
                       Navigator.pushReplacement(

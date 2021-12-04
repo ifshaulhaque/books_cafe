@@ -58,7 +58,6 @@ List getNotificationList() {
   return list;
 }
 
-
 class PopupMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

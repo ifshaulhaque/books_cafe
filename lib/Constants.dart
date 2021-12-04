@@ -1,0 +1,4 @@
+const ADDABLE_BUTTON = 100;
+const EDITABLE_BUTTON = 101;
+const NO_BUTTON = 102;
+const READ_ONLY = 104;

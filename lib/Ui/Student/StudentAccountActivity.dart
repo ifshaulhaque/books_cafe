@@ -1,3 +1,4 @@
+import 'package:books_cafe/Ui/Student/StudentProfileDetailActivity.dart';
 import 'package:books_cafe/UiDesign/Designs.dart';
 import 'package:flutter/material.dart';
 
@@ -66,12 +67,18 @@ class StudentAccountActivity extends StatelessWidget {
                       content: Text("Edit Profile")
                   ));
                 },
-                child: Text(
-                  "Edit Profile",
-                  style: TextStyle(
-                    fontSize: 22,
-                    color: Colors.green,
-                    fontWeight: FontWeight.w900,
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context, MaterialPageRoute(builder: (context) => StudentProfileDetailActivity()));
+                  },
+                  child: Text(
+                    "Edit Profile",
+                    style: TextStyle(
+                      fontSize: 22,
+                      color: Colors.green,
+                      fontWeight: FontWeight.w900,
+                    ),
                   ),
                 ),
               ),

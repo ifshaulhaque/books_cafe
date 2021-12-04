@@ -1,5 +1,7 @@
 import 'package:books_cafe/Ui/Institute/InstituteAccountActivity.dart';
 import 'package:books_cafe/Ui/Institute/InstituteBooksActivity.dart';
+import 'package:books_cafe/Ui/Institute/InstituteExpireActivity.dart';
+import 'package:books_cafe/Ui/Institute/InstituteIssueActivity.dart';
 import 'package:books_cafe/Ui/Institute/InstituteStudentsActivity.dart';
 import 'package:flutter/material.dart';
 
@@ -22,10 +24,10 @@ class _InstituteMainActivityState extends State<InstituteMainActivity> {
       child: InstituteStudentsActivity(),
     ),
     Center(
-      child: Text("Issue"),
+      child: InstituteIssueActivity(),
     ),
     Center(
-      child: Text("Expiry"),
+      child: InstituteExpireActivity(),
     ),
     Center(
       child: InstituteAccountActivity(),
