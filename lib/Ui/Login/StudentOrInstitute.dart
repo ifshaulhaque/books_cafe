@@ -1,13 +1,24 @@
+import 'package:books_cafe/Constants.dart';
 import 'package:books_cafe/Ui/Institute/InstituteMainActivity.dart';
 import 'package:books_cafe/Ui/Login/LoginActivity.dart';
 import 'package:books_cafe/Ui/Student/StudentMainActivity.dart';
 import 'package:books_cafe/UiDesign/Designs.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class StudentOrInstitute extends StatelessWidget {
+  User? mUser = FirebaseAuth.instance.currentUser;
+
+  FirebaseDatabase mDatabase = FirebaseDatabase.instance;
+  FirebaseFirestore mFirestore = FirebaseFirestore.instance;
+
   @override
   Widget build(BuildContext context) {
+    CheckLoginStatus(mUser, mFirestore, context);
+
     return Scaffold(
       body: Column(
         children: [
@@ -31,22 +42,24 @@ class StudentOrInstitute extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 GestureDetector(
-                  child: ImageTextCard('assets/student.png', "Student"),
-                  onTap: () {
-                    Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => LoginActivity(StudentMainActivity()))
-                    );
-                  }
+                    child: ImageTextCard('assets/student.png', "Student"),
+                    onTap: () {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) =>
+                              LoginActivity(StudentMainActivity()))
+                      );
+                    }
                 ),
                 GestureDetector(
-                  child: ImageTextCard('assets/university.png', "Institute"),
-                  onTap: () {
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(builder: (context) => LoginActivity(InstituteMainActivity()))
-                    );
-                  }
+                    child: ImageTextCard('assets/university.png', "Institute"),
+                    onTap: () {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) =>
+                              LoginActivity(InstituteMainActivity()))
+                      );
+                    }
                 ),
               ],
             ),
@@ -54,6 +67,23 @@ class StudentOrInstitute extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+void CheckLoginStatus(User? mUser, FirebaseFirestore mFirestore, BuildContext buildContext) {
+  var mContext = buildContext;
+
+  if (mUser != null) {
+    mFirestore.collection(USER_DATA_REF)
+        .doc(mUser.email.toString())
+        .get()
+        .then((snapshot) {
+          if(snapshot.data()!['type'] == STUDENT_TYPE) {
+            Navigator.pushReplacement(mContext, MaterialPageRoute(builder: (context) => StudentMainActivity()));
+          } else {
+            Navigator.pushReplacement(mContext, MaterialPageRoute(builder: (context) => InstituteMainActivity()));
+          }
+    });
   }
 }
 

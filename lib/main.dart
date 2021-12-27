@@ -2,11 +2,14 @@ import 'package:books_cafe/Ui/Login/LoginActivity.dart';
 import 'package:books_cafe/Ui/Login/RegistrationActivity.dart';
 import 'package:books_cafe/Ui/Login/StudentOrInstitute.dart';
 import 'package:books_cafe/Ui/Student/StudentMainActivity.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'Ui/Institute/InstituteMainActivity.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 

@@ -44,14 +44,14 @@ class ImageTextCard extends StatelessWidget {
 class TextFieldWithOutlinedBorder extends StatelessWidget {
   var labelText;
   var suffixIcon;
-  var txt = TextEditingController();
+  var textController = TextEditingController();
   var isEnalble = true;
   var text;
 
   TextFieldWithOutlinedBorder(this.labelText, this.suffixIcon);
 
   TextFieldWithOutlinedBorder.Disable(this.labelText, this.suffixIcon, this.text, this.isEnalble) {
-    txt.text = text;
+    textController.text = text;
   }
 
   @override
@@ -59,7 +59,7 @@ class TextFieldWithOutlinedBorder extends StatelessWidget {
     return Container(
       margin: EdgeInsets.fromLTRB(10, 5, 10, 5),
       child: TextField(
-        controller: txt,
+        controller: textController,
         enabled: isEnalble,
         decoration: InputDecoration(
           border: OutlineInputBorder(),

@@ -1,8 +1,12 @@
 import 'package:books_cafe/Ui/Institute/InstituteProfileDetailActivity.dart';
 import 'package:books_cafe/UiDesign/Designs.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class InstituteAccountActivity extends StatelessWidget {
+
+  FirebaseAuth mAuth = FirebaseAuth.instance;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -103,6 +107,7 @@ class InstituteAccountActivity extends StatelessWidget {
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                     content: Text("Logout"),
                   ));
+                  mAuth.signOut();
                 },
                 child: Text(
                   "Logout",
